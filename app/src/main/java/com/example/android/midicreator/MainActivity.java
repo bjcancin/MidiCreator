@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
 
         ritmos_spinner = (Spinner) findViewById(R.id.ritmos_spinner);
         ritmos_list = ritmos.getRitmos().keySet().toArray(new String[ritmos.getRitmos().keySet().size()]);
-        spinnerRitmosAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, ritmos_list);
+        spinnerRitmosAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ritmos_list);
         spinnerRitmosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         ritmos_spinner.setAdapter(spinnerRitmosAdapter);
 
@@ -170,6 +170,10 @@ public class MainActivity extends AppCompatActivity {
 
         mHandler = new Handler();
     }
+
+    //////////////////
+    // Otras Funciones
+    //////////////////
 
     void startmCount() {
         mCount.run();
