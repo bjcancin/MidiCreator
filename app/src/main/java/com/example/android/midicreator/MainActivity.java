@@ -15,8 +15,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -73,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        stop_button = (Button) findViewById(R.id.play_button);
+        stop_button = (Button) findViewById(R.id.stop_button);
         stop_button.setOnClickListener(new View.OnClickListener(){
 
             @Override
