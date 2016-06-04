@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sharedPref = getSharedPreferences("Ritmos", this.MODE_PRIVATE);
-        ritmoOptionSharedPref = getSharedPreferences("RitmosOptions", this.MODE_PRIVATE);
+        sharedPref = getSharedPreferences("Ritmos", MODE_PRIVATE);
+        ritmoOptionSharedPref = getSharedPreferences("RitmosOptions", MODE_PRIVATE);
 
         ritmos = new Ritmos(sharedPref, ritmoOptionSharedPref);
 
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // Opciones
         ///////////
 
-        optionsSharedPref = getSharedPreferences("Options", this.MODE_PRIVATE);
+        optionsSharedPref = getSharedPreferences("Options", MODE_PRIVATE);
         options = new Opciones(optionsSharedPref);
 
         //////////
