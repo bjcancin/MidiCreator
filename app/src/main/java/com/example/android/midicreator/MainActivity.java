@@ -196,14 +196,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 
+                Intent intent;
+
                 switch(item.getItemId()){
                     case R.id.menu_create:
-                        Intent intent = new Intent(MainActivity.this, CreateActivity.class);
+                        intent = new Intent(MainActivity.this, CreateActivity.class);
                         startActivity(intent);
                         return true;
 
                     case R.id.menu_edit:
-
+                        intent = new Intent(MainActivity.this, EditActivity.class);
+                        startActivity(intent);
                         return true;
 
                     default:
