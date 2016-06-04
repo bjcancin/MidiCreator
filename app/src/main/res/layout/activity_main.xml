@@ -52,9 +52,9 @@
         android:text="Crear/Editar"
         android:id="@+id/create_button"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentRight="false"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="25dp" />
+        android:layout_alignRight="@+id/repeat_plus_button" />
 
     <TextView
         android:layout_width="wrap_content"
