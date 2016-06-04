@@ -22,7 +22,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ritmo_input"
+        android:id="@+id/name_input"
         android:layout_below="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
@@ -36,7 +36,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Nombre:"
         android:id="@+id/textView4"
-        android:layout_alignBottom="@+id/ritmo_input"
+        android:layout_alignBottom="@+id/name_input"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="5dp" />
@@ -44,11 +44,11 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:layout_below="@+id/ritmo_input"
+        android:id="@+id/ritmo_input"
+        android:layout_below="@+id/name_input"
         android:layout_toRightOf="@+id/textView3"
-        android:layout_alignRight="@+id/ritmo_input"
-        android:layout_alignEnd="@+id/ritmo_input" />
+        android:layout_alignRight="@+id/name_input"
+        android:layout_alignEnd="@+id/name_input" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Ritmo:"
         android:id="@+id/textView5"
-        android:layout_alignBottom="@+id/editText"
+        android:layout_alignBottom="@+id/ritmo_input"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="5dp" />
@@ -66,11 +66,11 @@
         android:layout_height="wrap_content"
         android:text="Crear"
         android:id="@+id/create_button"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/ritmo_input"
         android:layout_alignEnd="@+id/textView6"
         android:layout_alignParentRight="true"
         android:layout_marginRight="40dp"
-        android:layout_marginTop="50dp" />
+        android:layout_marginTop="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -79,8 +79,8 @@
         android:text="Símbolos Rítmicos Permitidos"
         android:id="@+id/textView6"
         android:layout_below="@+id/create_button"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
+        android:layout_alignLeft="@+id/ritmo_input"
+        android:layout_alignStart="@+id/ritmo_input"
         android:layout_marginTop="50dp" />
 
     <TextView
