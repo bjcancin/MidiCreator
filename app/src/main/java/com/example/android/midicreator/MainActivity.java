@@ -1,5 +1,6 @@
 package com.example.android.midicreator;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner ritmos_spinner;
     String[] ritmos_list;
     ArrayAdapter<String> spinnerRitmosAdapter;
-    Button play_button, stop_button, tempo_minnus_button, tempo_plus_button, repeat_minnus_button, repeat_plus_button;
+    Button play_button, stop_button, tempo_minnus_button, tempo_plus_button, repeat_minnus_button, repeat_plus_button, create_button;
     TextView tempo_text, repeat_text, crono_text;
 
     private int mInterval;
@@ -138,6 +139,16 @@ public class MainActivity extends AppCompatActivity {
                 repeat+=1;
                 ritmos.setRepeat(ritmos_spinner.getSelectedItem().toString(),repeat);
                 repeat_text.setText(""+repeat);
+            }
+        });
+
+        create_button = (Button) findViewById(R.id.create_button);
+        create_button.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CreateActivity.class);
+                startActivity(intent);
             }
         });
 
