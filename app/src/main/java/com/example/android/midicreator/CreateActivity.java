@@ -113,7 +113,7 @@ public class CreateActivity extends AppCompatActivity {
                 String input_ritmo = ritmo_text.getText().toString();
 
                 if(ritmos.validateRitmo(input_ritmo)){
-                    probeRitmo(input_ritmo);
+                    probeRitmo(ritmos.cleanRitmo(input_ritmo));
                 }
             }
         });

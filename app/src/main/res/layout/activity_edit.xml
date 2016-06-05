@@ -35,8 +35,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Editar"
-        android:id="@+id/edit_button"
+        android:text="Guardar"
+        android:id="@+id/save_button"
         android:layout_alignTop="@+id/probe_button"
         android:layout_centerHorizontal="true"
         android:gravity="center_vertical"
@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:text="Eliminar"
         android:id="@+id/delete_button"
-        android:layout_alignTop="@+id/edit_button"
+        android:layout_alignTop="@+id/save_button"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -57,9 +57,8 @@
         android:id="@+id/ritmo_input"
         android:layout_below="@+id/ritmos_spinner"
         android:layout_alignStart="@+id/ritmos_spinner"
-        android:layout_alignRight="@+id/ritmos_spinner"
-        android:layout_alignEnd="@+id/ritmos_spinner"
-        android:layout_alignLeft="@+id/ritmos_spinner" />
+        android:layout_alignLeft="@+id/ritmos_spinner"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="wrap_content"

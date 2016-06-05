@@ -182,8 +182,8 @@ public class Rhythm2Event {
         if(pastX){
             outMap.put(j, new RhythmEvent(i*64, "xOff"));
             pastX = false;
-
         }
+
         else if(pastO){
             outMap.put(j, new RhythmEvent(i*64, "oOff"));
             pastO = false;
@@ -191,7 +191,7 @@ public class Rhythm2Event {
 
 
 
-        for(i = 1; i<j; i++)
+        for(i = 1; i<=j; i++)
         {
             tick = outMap.get(i).getTempo();
             event = outMap.get(i).getEvent();

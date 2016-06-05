@@ -230,6 +230,10 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        ///////////
+        // Contador
+        ///////////
+
         mHandler = new Handler();
     }
 

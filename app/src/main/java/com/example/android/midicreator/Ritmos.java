@@ -91,7 +91,7 @@ public class Ritmos {
     {
         if(validateRitmo(ritmo)){
             SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString(name, ritmo.toLowerCase());
+            editor.putString(name, cleanRitmo(ritmo));
 
             editor.commit();
             return true;
@@ -156,6 +156,26 @@ public class Ritmos {
     {
         if(a.compareTo(b) == 0)
             return true;
+        else
+            return false;
+    }
+
+    public boolean deleteRitmo(String name){
+
+        if(sharedPref.contains(name)){
+
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.remove(name);
+            editor.commit();
+
+            editor = options.edit();
+            editor.remove("TEMPO_" + name);
+            editor.remove("REPEAT_" + name);
+            editor.commit();
+
+            return true;
+        }
+
         else
             return false;
     }
