@@ -1,5 +1,6 @@
 package com.example.android.midicreator;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,7 +41,11 @@ public class CreateActivity extends AppCompatActivity {
                 return true;
 
             case R.id.options_about:
+                return true;
 
+            case android.R.id.home:
+                intent = new Intent(CreateActivity.this, MainActivity.class);
+                startActivity(intent);
                 return true;
 
             default:
@@ -52,5 +57,12 @@ public class CreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create);
+
+        /////////////
+        // Action Bar
+        /////////////
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

@@ -41,6 +41,11 @@ public class HelpActivity extends AppCompatActivity {
 
                 return true;
 
+            case android.R.id.home:
+                intent = new Intent(HelpActivity.this, MainActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -50,5 +55,12 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        /////////////
+        // Action Bar
+        /////////////
+
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 }

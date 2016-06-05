@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.options_about:
-
                 return true;
 
             default:
