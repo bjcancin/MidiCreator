@@ -73,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent;
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
 
         switch (item.getItemId()) {
             case R.id.options_options:
@@ -243,6 +246,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onMenuItemClick(MenuItem item) {
+
+                if(mediaPlayer != null){
+                    mediaPlayer.stop();
+                }
 
                 Intent intent;
 

@@ -63,6 +63,8 @@ public class Ritmos {
 
     public boolean createRitmo(String name, String ritmo){
 
+        ritmo = cleanRitmo(ritmo);
+
         if(validateRitmo(ritmo)){
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(name, ritmo.toLowerCase());
@@ -100,6 +102,19 @@ public class Ritmos {
         }
     }
 
+    public String cleanRitmo(String ritmo){
+
+        ritmo = ritmo.replace(",","");
+        ritmo = ritmo.replace("|","");
+        ritmo = ritmo.replace("-","");
+        ritmo = ritmo.replace("_","");
+        ritmo = ritmo.replace(" ","");
+
+        ritmo = ritmo.toLowerCase();
+
+        return ritmo;
+    }
+
     public void setTempo(String name, int tempo){
         SharedPreferences.Editor editor = options.edit();
         editor.putInt("TEMPO_" + name,tempo);
@@ -121,18 +136,28 @@ public class Ritmos {
     }
 
 
-    private boolean validateRitmo(String ritmo){
+    public boolean validateRitmo(String ritmo){
 
         boolean validate = true;
 
-        for(char c : ritmo.toLowerCase().toCharArray()){
-            if(c != 'x' || c != 'o' || c != '.'){
+        ritmo = cleanRitmo(ritmo);
+
+        for(Character c : ritmo.toCharArray()){
+            if(compareChar(c,'x') & compareChar(c,'o') & compareChar(c,'.')){
                 validate = false;
                 break;
             }
         }
 
         return validate;
+    }
+
+    public boolean compareChar(Character a, Character b)
+    {
+        if(a.compareTo(b) == 0)
+            return true;
+        else
+            return false;
     }
 
     public Map<String, ?> getRitmos(){

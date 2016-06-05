@@ -12,10 +12,10 @@ public class Opciones {
     }
 
     private void FirstInit(){
-        if(sharedPref.getString("INI","Y").compareTo("Y") == 0){
+        if(sharedPref.getBoolean("INI",true)){
             SharedPreferences.Editor editor = sharedPref.edit();
 
-            editor.putString("INI","N");
+            editor.putBoolean("INI",false);
             editor.putBoolean("METRONOME", false);
             editor.putBoolean("DANCE_TEMPO", false);
             editor.commit();
