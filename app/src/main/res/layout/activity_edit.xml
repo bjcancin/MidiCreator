@@ -9,4 +9,87 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.midicreator.EditActivity">
 
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ritmos_spinner"
+        android:layout_marginTop="37dp"
+        android:spinnerMode="dropdown"
+        android:background="@android:drawable/btn_dropdown"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/probe_button"
+        android:layout_toRightOf="@+id/textView7"
+        android:layout_marginLeft="0dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Probar"
+        android:id="@+id/probe_button"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ritmo_input"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar"
+        android:id="@+id/edit_button"
+        android:layout_alignTop="@+id/probe_button"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_vertical"
+        android:textAlignment="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eliminar"
+        android:id="@+id/delete_button"
+        android:layout_alignTop="@+id/edit_button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ritmo_input"
+        android:layout_below="@+id/ritmos_spinner"
+        android:layout_alignStart="@+id/ritmos_spinner"
+        android:layout_alignRight="@+id/ritmos_spinner"
+        android:layout_alignEnd="@+id/ritmos_spinner"
+        android:layout_alignLeft="@+id/ritmos_spinner" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Editar"
+        android:id="@+id/textView6"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nombre"
+        android:id="@+id/textView7"
+        android:layout_alignTop="@+id/ritmos_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Ritmo"
+        android:id="@+id/textView8"
+        android:layout_alignBottom="@+id/ritmo_input"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp" />
+
 </RelativeLayout>
