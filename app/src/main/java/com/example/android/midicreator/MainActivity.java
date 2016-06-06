@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private Ritmos ritmos;
     private String music;
     private int tempo, repeat;
+    private int tempoPosMax;
 
     Spinner ritmos_spinner;
     String[] ritmos_list;
@@ -303,9 +304,22 @@ public class MainActivity extends AppCompatActivity {
             int musicLengthHalf = musicLength/2;
             int deltaTempo = 125*120/tempo;
 
-            int tempoPos = (currentTime % (2*musicLength*deltaTempo))/(4*deltaTempo) + 1;
-            //int tempoPos = (currentTime / (2*musicLength*deltaTempo)) + 1;
-            crono_text.setText("" + tempoPos+"/" + musicLengthHalf);
+            if(options.getOption("Tiempo de Palmas")){
+                int tempoPos = (currentTime % (2 * musicLength * deltaTempo)) / (2 * deltaTempo) + 1;
+                tempoPos = Rhythm2Event.mapPalmas(music).get(tempoPos);
+
+                if(tempoPos == 0)
+                    tempoPos = Rhythm2Event.mapPalmas(music).get(music.length());
+
+                crono_text.setText("" + tempoPos + "/" + Rhythm2Event.mapPalmas(music).get(music.length()));
+            }
+
+            else
+            {
+
+                int tempoPos = (currentTime % (2 * musicLength * deltaTempo)) / (4 * deltaTempo) + 1;
+                crono_text.setText("" + tempoPos + "/" + musicLengthHalf);
+            }
         }
 
     }
@@ -335,6 +349,7 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.start();
 
         mInterval = 125/tempo;
+        tempoPosMax = 0;
         startmCount();
     }
 

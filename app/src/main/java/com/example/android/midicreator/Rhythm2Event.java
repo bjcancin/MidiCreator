@@ -22,8 +22,8 @@ public class Rhythm2Event {
         {
             put("xOn", hexStringToByteArray("993d7f"));
             put("xOff", hexStringToByteArray("893d7f"));
-            put("mOn", hexStringToByteArray("992a7f"));
-            put("mOff", hexStringToByteArray("892a7f"));
+            put("mOn", hexStringToByteArray("992a3f"));
+            put("mOff", hexStringToByteArray("892a3f"));
             put("oOn", hexStringToByteArray("99247f"));
             put("oOff", hexStringToByteArray("89247f"));
             put("midiHeader", hexStringToByteArray("4d54686400000006000100020080"));
@@ -386,6 +386,30 @@ public class Rhythm2Event {
             outMap.put(i, new RhythmEvent(tick - lastTick, event));
 
             lastTick = tick;
+        }
+
+        return outMap;
+    }
+
+    static public Map<Integer, Integer> mapPalmas(String ritmo){
+
+        Map<Integer, Integer> outMap = new HashMap<Integer, Integer>();
+        CharacterIterator ritmoIterator = new CharacterIterator(ritmo);
+        int count = 0;
+
+        while(ritmoIterator.hasNext()){
+
+            int pos = ritmoIterator.getPos();
+            Character c = ritmoIterator.next();
+            if(c.compareTo('x') == 0 || c.compareTo('o') == 0)
+            {
+                outMap.put(pos + 1, ++count);
+            }
+
+            else
+            {
+                outMap.put(pos+1,count);
+            }
         }
 
         return outMap;
