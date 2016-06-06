@@ -1,5 +1,7 @@
 package com.example.android.midicreator;
 
+import android.content.SharedPreferences;
+
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,20 +22,23 @@ public class Rhythm2Event {
         {
             put("xOn", hexStringToByteArray("993d7f"));
             put("xOff", hexStringToByteArray("893d7f"));
+            put("mOn", hexStringToByteArray("993d7f"));
+            put("mOff", hexStringToByteArray("893d7f"));
             put("oOn", hexStringToByteArray("99247f"));
             put("oOff", hexStringToByteArray("89247f"));
             put("midiHeader", hexStringToByteArray("4d54686400000006000100020080"));
+            put("midiHeaderMetronome", hexStringToByteArray("4d54686400000006000100030080"));
             put("trackHeader", hexStringToByteArray("4d54726b"));
             put("closeTrack", hexStringToByteArray("00ff2f00"));
             put("trackTempoHeader", hexStringToByteArray("4d54726b0000000b00ff5103"));
         }};
 
-    public static void WriteMidi(File file, String ritmo, int tempo, int repeat) throws IOException {
+    public static void WriteMidi(File file, String ritmo, int tempo, int repeat, Map<String, Boolean> options) throws IOException {
         Map<Integer, RhythmEvent> aux = eventMap(ritmo);
-        WriteMidi(file, tempo, repeat, aux, ritmo);
+        WriteMidi(file, tempo, repeat, aux, ritmo, options);
     }
 
-    public static void WriteMidi(File file, int tempo, int repeat, Map<Integer, RhythmEvent> eventMap, String ritmo) throws IOException{
+    public static void WriteMidi(File file, int tempo, int repeat, Map<Integer, RhythmEvent> eventMap, String ritmo, Map<String, Boolean> options) throws IOException{
 
         int count = 0;
         CharacterIterator ritmoIterator = new CharacterIterator(new StringBuffer(ritmo).reverse().toString());
@@ -58,7 +63,11 @@ public class Rhythm2Event {
             //FileOutputStream out = new FileOutputStream(fileName);
 
             // Escribimos el header
-            out.write(eventDictionary.get("midiHeader"));
+
+            if(options.get("Metrónomo"))
+                out.write(eventDictionary.get("midiHeader3"));
+            else
+                out.write(eventDictionary.get("midiHeader"));
 
             // Escribimos el tempoTrack
             out.write(eventDictionary.get("trackTempoHeader"));
@@ -114,6 +123,90 @@ public class Rhythm2Event {
 
             // Cerramos el track
             out.write(eventDictionary.get("closeTrack"));
+
+            // Escribimos el track de metrónomo
+
+            if(options.get("Metrónomo"))
+            {
+                out.write(eventDictionary.get("trackHeader"));
+
+                ritmoIterator = new CharacterIterator(ritmo);
+                trackList = new ArrayList<byte[]>();
+                numOfBytes = 0;
+                boolean mOn = false;
+
+                for(int i = 0; i < repeat ; i++){
+                    while(ritmoIterator.hasNext()){
+
+                        ritmoIterator.next();
+
+                        if(mOn)
+                        {
+                            // Se escribe el timestamp
+                            byte[] aux = int2VarLengthbytes(0);
+                            numOfBytes += aux.length;
+                            trackList.add(aux);
+
+                            // Se escribe el evento
+                            byte[] aux2 = eventDictionary.get(eventDictionary.get("mOff"));
+                            numOfBytes += aux2.length;
+                            trackList.add(aux2);
+
+                            mOn = false;
+                        }
+
+
+                        if(ritmoIterator.getPos()%2 == 0){
+
+                            // Se escribe el timestamp
+                            byte[] aux = int2VarLengthbytes(0);
+                            numOfBytes += aux.length;
+                            trackList.add(aux);
+
+                            // Se escribe el evento
+                            byte[] aux2 = eventDictionary.get(eventDictionary.get("mOn"));
+                            numOfBytes += aux2.length;
+                            trackList.add(aux2);
+
+                            mOn = true;
+                        }
+
+                        else
+                        {
+                            // Se escribe el timestamp
+                            byte[] aux = int2VarLengthbytes(128);
+                            numOfBytes += aux.length;
+                            trackList.add(aux);
+
+                            // Se escribe el evento
+                            byte[] aux2 = eventDictionary.get(eventDictionary.get("mOff"));
+                            numOfBytes += aux2.length;
+                            trackList.add(aux2);
+
+                            mOn = false;
+                        }
+
+                    }
+                    ritmoIterator.restart();
+                }
+
+                // Escribimos el número de bytes en el archivo
+                out.write(intToByteArray4(numOfBytes+4));
+
+                // Escribimos los archivos de la lista
+                trackListIterator = trackList.iterator();
+
+                while(trackListIterator.hasNext())
+                {
+                    out.write(trackListIterator.next());
+                }
+
+                // Cerramos el track
+                out.write(eventDictionary.get("closeTrack"));
+            }
+
+
+
         }
         finally {
                 if (out != null) {

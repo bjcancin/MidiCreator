@@ -324,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         try {
-            Rhythm2Event.WriteMidi(file, music, tempo, repeat);
+            Rhythm2Event.WriteMidi(file, music, tempo, repeat, options.getOptions());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -353,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                 tempo = Integer.parseInt((String) tempo_text.getText());
 
                 try {
-                    Rhythm2Event.WriteMidi(file, music, tempo, repeat);
+                    Rhythm2Event.WriteMidi(file, music, tempo, repeat, options.getOptions());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -373,6 +373,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }

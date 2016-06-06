@@ -39,8 +39,8 @@ public class Opciones {
         return sharedPref.getBoolean(optionName,false);
     }
 
-    public Map<String, ?> getOptions(){
-        Map<String, ?> opcionesMap = sharedPref.getAll();
+    public Map<String, Boolean> getOptions(){
+        Map<String, Boolean> opcionesMap = (Map<String, Boolean>) sharedPref.getAll();
         opcionesMap.remove("INI");
 
         return opcionesMap;

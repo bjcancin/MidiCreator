@@ -30,4 +30,6 @@ class CharacterIterator implements Iterator<Character> {
     public void remove() {
         throw new UnsupportedOperationException();
     }
+
+    public int getPos(){return pos;}
 }
