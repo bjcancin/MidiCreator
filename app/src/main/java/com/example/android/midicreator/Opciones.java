@@ -2,6 +2,8 @@ package com.example.android.midicreator;
 
 import android.content.SharedPreferences;
 
+import java.util.Map;
+
 public class Opciones {
 
     private SharedPreferences sharedPref;
@@ -16,8 +18,8 @@ public class Opciones {
             SharedPreferences.Editor editor = sharedPref.edit();
 
             editor.putBoolean("INI",false);
-            editor.putBoolean("METRONOME", false);
-            editor.putBoolean("DANCE_TEMPO", false);
+            editor.putBoolean("Metrónomo", false);
+            editor.putBoolean("Tiempo de Palmas", false);
             editor.commit();
         }
     }
@@ -35,5 +37,12 @@ public class Opciones {
     public boolean getOption(String optionName)
     {
         return sharedPref.getBoolean(optionName,false);
+    }
+
+    public Map<String, ?> getOptions(){
+        Map<String, ?> opcionesMap = sharedPref.getAll();
+        opcionesMap.remove("INI");
+
+        return opcionesMap;
     }
 }

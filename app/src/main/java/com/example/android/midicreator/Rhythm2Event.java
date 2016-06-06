@@ -189,9 +189,7 @@ public class Rhythm2Event {
             pastO = false;
         }
 
-
-
-        for(i = 1; i<=j; i++)
+        for(i = 1; i<=outMap.size(); i++)
         {
             tick = outMap.get(i).getTempo();
             event = outMap.get(i).getEvent();
@@ -201,9 +199,7 @@ public class Rhythm2Event {
             lastTick = tick;
         }
 
-
         return outMap;
-
     }
 
     private static byte[] int2VarLengthbytes (int value)
