@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -120,7 +121,10 @@ public class CreateActivity extends AppCompatActivity {
 
                 if(ritmos.validateRitmo(input_ritmo)){
                     probeRitmo(ritmos.cleanRitmo(input_ritmo));
+                    Toast.makeText(getApplicationContext(), "Reproduciendo ...", Toast.LENGTH_SHORT).show();
                 }
+                else
+                    Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -132,6 +136,11 @@ public class CreateActivity extends AppCompatActivity {
                 String input_ritmo = ritmo_text.getText().toString();
 
                 boolean isCreate = createRitmo(input_name, input_ritmo);
+
+                if(isCreate)
+                    Toast.makeText(getApplicationContext(), "Ritmo Guardado con Éxito", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
 
             }
         });

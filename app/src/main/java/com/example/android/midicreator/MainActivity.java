@@ -22,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import org.w3c.dom.Text;
@@ -152,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 play();
+                Toast.makeText(getApplicationContext(), "Reproduciendo ...", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -161,7 +163,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mediaPlayer != null){
-                    mediaPlayer.stop();}
+                    if(mediaPlayer.isPlaying())
+                        Toast.makeText(getApplicationContext(), "Stop", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.stop();
+                }
             }
         });
 

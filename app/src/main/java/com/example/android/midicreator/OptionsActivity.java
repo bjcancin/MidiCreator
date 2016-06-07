@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -129,6 +130,8 @@ public class OptionsActivity extends AppCompatActivity {
                 for (int i = 0; i < checked.size(); i++) {
                     options.setOption(optionList.get(i),checked.valueAt(i));
                 }
+
+                Toast.makeText(getApplicationContext(), "Opciones Guardadas con Éxito", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -137,6 +140,7 @@ public class OptionsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 for(String optionString : optionList){
                     options_listview.setItemChecked(optionList.indexOf(optionString),options.getOption(optionString));
+                    Toast.makeText(getApplicationContext(), "Opciones Reestablecidas", Toast.LENGTH_SHORT).show();
                 }
             }
         });

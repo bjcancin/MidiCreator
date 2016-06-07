@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -128,7 +129,10 @@ public class EditActivity extends AppCompatActivity {
                 String input_ritmo = ritmo_input.getText().toString();
                 if(ritmos.validateRitmo(input_ritmo)){
                     probeRitmo(ritmos.cleanRitmo(input_ritmo));
+                    Toast.makeText(getApplicationContext(), "Reproduciendo ...", Toast.LENGTH_SHORT).show();
                 }
+                else
+                Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -140,6 +144,11 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 boolean save = ritmos.editRitmo(ritmos_spinner.getSelectedItem().toString(),ritmo_input.getText().toString());
+
+                if(save)
+                    Toast.makeText(getApplicationContext(), "Ritmo Guardado con Éxito", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -153,6 +162,8 @@ public class EditActivity extends AppCompatActivity {
                 ritmos.deleteRitmo(ritmos_spinner.getSelectedItem().toString());
                 ritmos_list.remove(pos);
                 spinnerRitmosAdapter.notifyDataSetChanged();
+
+                Toast.makeText(getApplicationContext(), "Ritmo Eliminado", Toast.LENGTH_SHORT).show();
             }
         });
 
