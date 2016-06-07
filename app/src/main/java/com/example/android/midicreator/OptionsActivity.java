@@ -28,6 +28,8 @@ public class OptionsActivity extends AppCompatActivity {
     ListView options_listview;
     ArrayAdapter<String> optionsAdapter;
 
+    Toast toast;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(OptionsActivity.this, MainActivity.class);
@@ -131,7 +133,7 @@ public class OptionsActivity extends AppCompatActivity {
                     options.setOption(optionList.get(i),checked.valueAt(i));
                 }
 
-                Toast.makeText(getApplicationContext(), "Opciones Guardadas con Éxito", Toast.LENGTH_SHORT).show();
+                toastMessage("Opciones Guardadas con Éxito");
             }
         });
 
@@ -140,10 +142,19 @@ public class OptionsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 for(String optionString : optionList){
                     options_listview.setItemChecked(optionList.indexOf(optionString),options.getOption(optionString));
-                    Toast.makeText(getApplicationContext(), "Opciones Reestablecidas", Toast.LENGTH_SHORT).show();
+                    toastMessage("Opciones Reestablecidas");
                 }
             }
         });
 
+    }
+
+    public void toastMessage(String message){
+
+        if(toast != null)
+            toast.cancel();
+
+        toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        toast.show();
     }
 }

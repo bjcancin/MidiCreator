@@ -37,6 +37,8 @@ public class EditActivity extends AppCompatActivity {
     Button probe_button, save_button, delete_button;
     TextView ritmo_input;
 
+    Toast toast;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(EditActivity.this, MainActivity.class);
@@ -129,10 +131,10 @@ public class EditActivity extends AppCompatActivity {
                 String input_ritmo = ritmo_input.getText().toString();
                 if(ritmos.validateRitmo(input_ritmo)){
                     probeRitmo(ritmos.cleanRitmo(input_ritmo));
-                    Toast.makeText(getApplicationContext(), "Reproduciendo ...", Toast.LENGTH_SHORT).show();
+                    toastMessage("Reproduciendo ...");
                 }
                 else
-                Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
+                    toastMessage("Ritmo mal ingresado. Consulta la ayuda");
 
 
             }
@@ -146,9 +148,9 @@ public class EditActivity extends AppCompatActivity {
                 boolean save = ritmos.editRitmo(ritmos_spinner.getSelectedItem().toString(),ritmo_input.getText().toString());
 
                 if(save)
-                    Toast.makeText(getApplicationContext(), "Ritmo Guardado con Éxito", Toast.LENGTH_SHORT).show();
+                    toastMessage("Ritmo Guardado con Éxito");
                 else
-                    Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
+                    toastMessage("Ritmo mal ingresado. Consulta la ayuda");
 
             }
         });
@@ -163,7 +165,7 @@ public class EditActivity extends AppCompatActivity {
                 ritmos_list.remove(pos);
                 spinnerRitmosAdapter.notifyDataSetChanged();
 
-                Toast.makeText(getApplicationContext(), "Ritmo Eliminado", Toast.LENGTH_SHORT).show();
+                toastMessage("Ritmo Eliminado");
             }
         });
 
@@ -211,5 +213,14 @@ public class EditActivity extends AppCompatActivity {
         mediaPlayer.setVolume(1,1);
 
         mediaPlayer.start();
+    }
+
+    public void toastMessage(String message){
+
+        if(toast != null)
+            toast.cancel();
+
+        toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        toast.show();
     }
 }

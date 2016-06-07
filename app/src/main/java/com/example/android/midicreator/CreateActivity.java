@@ -30,6 +30,8 @@ public class CreateActivity extends AppCompatActivity {
     Button probe_button, create_button;
     EditText name_text, ritmo_text;
 
+    Toast toast;
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(CreateActivity.this, MainActivity.class);
@@ -121,10 +123,10 @@ public class CreateActivity extends AppCompatActivity {
 
                 if(ritmos.validateRitmo(input_ritmo)){
                     probeRitmo(ritmos.cleanRitmo(input_ritmo));
-                    Toast.makeText(getApplicationContext(), "Reproduciendo ...", Toast.LENGTH_SHORT).show();
+                    toastMessage("Reproduciendo ...");
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
+                    toastMessage("Ritmo mal ingresado. Consulta la ayuda");
             }
         });
 
@@ -138,9 +140,9 @@ public class CreateActivity extends AppCompatActivity {
                 boolean isCreate = createRitmo(input_name, input_ritmo);
 
                 if(isCreate)
-                    Toast.makeText(getApplicationContext(), "Ritmo Guardado con Éxito", Toast.LENGTH_SHORT).show();
+                    toastMessage("Ritmo Guardado con Éxito");
                 else
-                    Toast.makeText(getApplicationContext(), "Ritmo mal ingresado. Consulta la ayuda", Toast.LENGTH_SHORT).show();
+                    toastMessage("Ritmo mal ingresado. Consulta la ayuda");
 
             }
         });
@@ -172,5 +174,14 @@ public class CreateActivity extends AppCompatActivity {
 
     public boolean createRitmo(String name, String ritmo){
         return ritmos.createRitmo(name,ritmo);
+    }
+
+    public void toastMessage(String message){
+
+        if(toast != null)
+            toast.cancel();
+
+        toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        toast.show();
     }
 }

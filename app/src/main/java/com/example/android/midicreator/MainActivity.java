@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     Bitmap ball;
     Canvas ball_canvas;
 
+    Toast toast;
+
     private int mInterval;
     private Handler mHandler;
 
@@ -153,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 play();
-                Toast.makeText(getApplicationContext(), "Reproduciendo ...", Toast.LENGTH_LONG).show();
+                toastMessage("Reproduciendo ...");
             }
         });
 
@@ -164,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(mediaPlayer != null){
                     if(mediaPlayer.isPlaying())
-                        Toast.makeText(getApplicationContext(), "Stop", Toast.LENGTH_SHORT).show();
+                        toastMessage("Stop");
                     mediaPlayer.stop();
                 }
             }
@@ -419,5 +421,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    public void toastMessage(String message){
+
+        if(toast != null)
+            toast.cancel();
+
+        toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
+        toast.show();
     }
 }

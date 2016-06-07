@@ -143,10 +143,14 @@ public class Ritmos {
         ritmo = cleanRitmo(ritmo);
 
         for(Character c : ritmo.toCharArray()){
-            if(compareChar(c,'x') & compareChar(c,'o') & compareChar(c,'.')){
+            if(compareChar(c,'x') || compareChar(c,'o') || compareChar(c,'.')){
+            }
+            else
+            {
                 validate = false;
                 break;
             }
+
         }
 
         return validate;
