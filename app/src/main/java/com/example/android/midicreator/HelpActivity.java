@@ -30,11 +30,15 @@ public class HelpActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.options_options:
                 intent = new Intent(HelpActivity.this, OptionsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.options_help:
                 intent = new Intent(HelpActivity.this, HelpActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
 
             case R.id.options_about:
@@ -43,7 +47,9 @@ public class HelpActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 intent = new Intent(HelpActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
 
             default:

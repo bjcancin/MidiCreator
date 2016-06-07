@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface arg0, int arg1) {
-                        MainActivity.super.onBackPressed();
+                        finish();
                     }
                 }).create().show();
     }
@@ -80,18 +80,25 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent;
+
         if(mediaPlayer != null){
             mediaPlayer.stop();
         }
 
+
+
         switch (item.getItemId()) {
             case R.id.options_options:
                 intent = new Intent(MainActivity.this, OptionsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.options_help:
                 intent = new Intent(MainActivity.this, HelpActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
 
             case R.id.options_about:
@@ -277,12 +284,16 @@ public class MainActivity extends AppCompatActivity {
                 switch(item.getItemId()){
                     case R.id.menu_create:
                         intent = new Intent(MainActivity.this, CreateActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        finish();
                         return true;
 
                     case R.id.menu_edit:
                         intent = new Intent(MainActivity.this, EditActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
+                        finish();
                         return true;
 
                     default:

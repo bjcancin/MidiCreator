@@ -50,11 +50,15 @@ public class CreateActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.options_options:
                 intent = new Intent(CreateActivity.this, OptionsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
             case R.id.options_help:
                 intent = new Intent(CreateActivity.this, HelpActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
 
             case R.id.options_about:
@@ -62,7 +66,9 @@ public class CreateActivity extends AppCompatActivity {
 
             case android.R.id.home:
                 intent = new Intent(CreateActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+                finish();
                 return true;
 
             default:
