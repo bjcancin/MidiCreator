@@ -149,6 +149,13 @@
         android:layout_alignEnd="@+id/repeat_plus_button"
         android:layout_marginRight="35dp" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ball_imageView"
+        android:layout_below="@+id/ritmos_spinner"
+        android:layout_alignRight="@+id/create_button"
+        android:layout_alignEnd="@+id/create_button" />
 
 
 </RelativeLayout>

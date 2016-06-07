@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
@@ -16,6 +18,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -45,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> spinnerRitmosAdapter;
     Button play_button, stop_button, tempo_minnus_button, tempo_plus_button, repeat_minnus_button, repeat_plus_button, create_button;
     TextView tempo_text, repeat_text, crono_text;
+    ImageView ball_imageView;
+    Bitmap ball;
+    Canvas ball_canvas;
 
     private int mInterval;
     private Handler mHandler;
@@ -101,12 +107,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ////////////////
+        // Declaraciones
+        ////////////////
+
         sharedPref = getSharedPreferences("Ritmos", MODE_PRIVATE);
         ritmoOptionSharedPref = getSharedPreferences("RitmosOptions", MODE_PRIVATE);
 
         ritmos = new Ritmos(sharedPref, ritmoOptionSharedPref);
 
         file = new File(this.getFilesDir(),"OutputMidi.mid");
+
+        ball = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888);
+        ball_canvas = new Canvas(ball);
 
         ///////////
         // Opciones
