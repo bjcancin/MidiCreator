@@ -9,21 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.midicreator.CreateActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Crear"
-        android:id="@+id/textView3"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/name_input"
-        android:layout_below="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/textView4"
@@ -46,9 +35,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/ritmo_input"
         android:layout_below="@+id/name_input"
-        android:layout_toRightOf="@+id/textView3"
         android:layout_alignRight="@+id/name_input"
-        android:layout_alignEnd="@+id/name_input" />
+        android:layout_alignEnd="@+id/name_input"
+        android:layout_alignLeft="@+id/name_input"
+        android:layout_alignStart="@+id/name_input" />
 
     <TextView
         android:layout_width="wrap_content"

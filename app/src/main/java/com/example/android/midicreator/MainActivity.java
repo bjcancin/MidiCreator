@@ -1,11 +1,14 @@
 package com.example.android.midicreator;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
@@ -121,8 +124,7 @@ public class MainActivity extends AppCompatActivity {
         // Declaraciones
         ////////////////
 
-        setTitle("Soleá Metrónomo Flamenco");
-        //getActionBar().setIcon(R.drawable.my_icon);
+        setTitle("Soleá MF");
 
         sharedPref = getSharedPreferences("Ritmos", MODE_PRIVATE);
         ritmoOptionSharedPref = getSharedPreferences("RitmosOptions", MODE_PRIVATE);

@@ -99,6 +99,8 @@ public class EditActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        setTitle("Editar Ritmo");
+
         ////////////////
         // Declaraciones
         ////////////////

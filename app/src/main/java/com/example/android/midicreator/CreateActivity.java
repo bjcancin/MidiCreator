@@ -91,6 +91,8 @@ public class CreateActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        setTitle("Crear Ritmo");
+
         ////////////////
         // Declaraciones
         ////////////////

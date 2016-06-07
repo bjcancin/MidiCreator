@@ -68,5 +68,7 @@ public class HelpActivity extends AppCompatActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        setTitle("Ayuda");
     }
 }
