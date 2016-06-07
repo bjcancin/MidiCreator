@@ -111,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
         // Declaraciones
         ////////////////
 
+        setTitle("Soleá Metrónomo Flamenco");
+        //getActionBar().setIcon(R.drawable.my_icon);
+
         sharedPref = getSharedPreferences("Ritmos", MODE_PRIVATE);
         ritmoOptionSharedPref = getSharedPreferences("RitmosOptions", MODE_PRIVATE);
 
