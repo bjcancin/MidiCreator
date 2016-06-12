@@ -3,4 +3,5 @@
     <color name="colorPrimary">#b70000</color>
     <color name="colorPrimaryDark">#b70000</color>
     <color name="colorAccent">#b70000</color>
+    <item name="opaque" type="color">#cc000000</item>
 </resources>

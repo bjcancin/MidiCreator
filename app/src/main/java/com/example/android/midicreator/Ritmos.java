@@ -64,8 +64,9 @@ public class Ritmos {
     public boolean createRitmo(String name, String ritmo){
 
         ritmo = cleanRitmo(ritmo);
+        int length_name = name.length();
 
-        if(validateRitmo(ritmo)){
+        if(validateRitmo(ritmo) && length_name > 0){
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(name, ritmo.toLowerCase());
 

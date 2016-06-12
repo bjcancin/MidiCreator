@@ -33,12 +33,12 @@ public class Rhythm2Event {
             put("trackTempoHeader", hexStringToByteArray("4d54726b0000000b00ff5103"));
         }};
 
-    public static void WriteMidi(File file, String ritmo, int tempo, int repeat, Map<String, Boolean> options) throws IOException {
+    public static void WriteMidi(File file, String ritmo, int tempo, int repeat, SharedPreferences options) throws IOException {
         Map<Integer, RhythmEvent> aux = eventMap(ritmo);
         WriteMidi(file, tempo, repeat, aux, ritmo, options);
     }
 
-    public static void WriteMidi(File file, int tempo, int repeat, Map<Integer, RhythmEvent> eventMap, String ritmo, Map<String, Boolean> options) throws IOException{
+    public static void WriteMidi(File file, int tempo, int repeat, Map<Integer, RhythmEvent> eventMap, String ritmo, SharedPreferences options) throws IOException{
 
         int count = 0;
         CharacterIterator ritmoIterator = new CharacterIterator(new StringBuffer(ritmo).reverse().toString());
@@ -64,7 +64,7 @@ public class Rhythm2Event {
 
             // Escribimos el header
 
-            if(options.get("Metrónomo"))
+            if(options.getBoolean("metronome_switch",false))
                 out.write(eventDictionary.get("midiHeaderMetronome"));
             else
                 out.write(eventDictionary.get("midiHeader"));
@@ -126,7 +126,7 @@ public class Rhythm2Event {
 
             // Escribimos el track de metrónomo
 
-            if(options.get("Metrónomo"))
+            if(options.getBoolean("metronome_switch",false))
             {
                 out.write(eventDictionary.get("trackHeader"));
 

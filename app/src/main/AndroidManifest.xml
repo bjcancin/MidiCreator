@@ -20,10 +20,8 @@
         <activity android:name=".OptionsActivity" />
         <activity android:name=".CreateActivity" />
         <activity android:name=".EditActivity" />
-        <activity android:name=".HelpActivity" />
-        <activity
-            android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+        <activity   android:name=".HelpActivity"
+                    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 
 </manifest>

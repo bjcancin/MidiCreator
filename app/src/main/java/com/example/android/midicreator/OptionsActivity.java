@@ -92,71 +92,12 @@ public class OptionsActivity extends AppCompatActivity {
 
         setTitle("Opciones");
 
-        ////////////////
-        // Declaraciones
-        ////////////////
+        ////////////
+        // Fragments
+        ////////////
 
-        optionsSharedPref = getSharedPreferences("Options", MODE_PRIVATE);
-        options = new Opciones(optionsSharedPref);
-        optionList = new ArrayList(Arrays.asList(options.getOptions().keySet().toArray(new String[options.getOptions().keySet().size()])));
-
-
-
-        ///////////
-        // ListView
-        ///////////
-
-        options_listview = (ListView) findViewById(R.id.options_listView);
-
-        //options_listview.setChoiceMode(options_listview.CHOICE_MODE_MULTIPLE);
-        options_listview.setTextFilterEnabled(true);
-
-        optionsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_checked, optionList);
-        options_listview.setAdapter(optionsAdapter);
-
-        for(String optionString : optionList){
-            options_listview.setItemChecked(optionList.indexOf(optionString),options.getOption(optionString));
-        }
-
-        //////////
-        // Botones
-        //////////
-
-        save_button = (Button) findViewById(R.id.save_button);
-        restore_button = (Button) findViewById(R.id.restore_button);
-
-        save_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                SparseBooleanArray checked = options_listview.getCheckedItemPositions();
-
-                for (int i = 0; i < checked.size(); i++) {
-                    options.setOption(optionList.get(i),checked.valueAt(i));
-                }
-
-                toastMessage("Opciones Guardadas con Éxito");
-            }
-        });
-
-        restore_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                for(String optionString : optionList){
-                    options_listview.setItemChecked(optionList.indexOf(optionString),options.getOption(optionString));
-                    toastMessage("Opciones Reestablecidas");
-                }
-            }
-        });
-
-    }
-
-    public void toastMessage(String message){
-
-        if(toast != null)
-            toast.cancel();
-
-        toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG);
-        toast.show();
+        getFragmentManager().beginTransaction()
+                .replace(android.R.id.content, new OptionsFragment())
+                .commit();
     }
 }

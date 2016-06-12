@@ -144,7 +144,7 @@ public class CreateActivity extends AppCompatActivity {
                 if(isCreate)
                     toastMessage("Ritmo Guardado con Éxito");
                 else
-                    toastMessage("Ritmo mal ingresado. Consulta la ayuda");
+                    toastMessage("Nombre o Ritmo mal ingresado. Consulta la ayuda");
 
             }
         });

@@ -12,6 +12,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
+import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     private File file;
     private MediaPlayer mediaPlayer;
     private SharedPreferences sharedPref, ritmoOptionSharedPref, optionsSharedPref;
-    private Opciones options;
     private Ritmos ritmos;
     private String music;
     private int tempo, repeat;
@@ -102,9 +103,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.options_help:
                 intent = new Intent(MainActivity.this, HelpActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
-                finish();
                 return true;
 
             case R.id.options_about:
@@ -140,8 +140,7 @@ public class MainActivity extends AppCompatActivity {
         // Opciones
         ///////////
 
-        optionsSharedPref = getSharedPreferences("Options", MODE_PRIVATE);
-        options = new Opciones(optionsSharedPref);
+        optionsSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
         //////////
         // Botones
@@ -340,7 +339,7 @@ public class MainActivity extends AppCompatActivity {
             int musicLengthHalf = musicLength/2;
             int deltaTempo = 125*120/tempo;
 
-            if(options.getOption("Tiempo de Palmas")){
+            if(optionsSharedPref.getBoolean("palmas_switch",false)){
                 int tempoPos = (currentTime % (2 * musicLength * deltaTempo)) / (2 * deltaTempo) + 1;
                 tempoPos = Rhythm2Event.mapPalmas(music).get(tempoPos);
 
@@ -374,7 +373,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         try {
-            Rhythm2Event.WriteMidi(file, music, tempo, repeat, options.getOptions());
+            Rhythm2Event.WriteMidi(file, music, tempo, repeat, optionsSharedPref);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -384,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
 
         mediaPlayer.start();
 
-        mInterval = 125/tempo;
+        mInterval = 125/(2*tempo);
         tempoPosMax = 0;
         startmCount();
     }
@@ -404,7 +403,7 @@ public class MainActivity extends AppCompatActivity {
                 tempo = Integer.parseInt((String) tempo_text.getText());
 
                 try {
-                    Rhythm2Event.WriteMidi(file, music, tempo, repeat, options.getOptions());
+                    Rhythm2Event.WriteMidi(file, music, tempo, repeat);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
