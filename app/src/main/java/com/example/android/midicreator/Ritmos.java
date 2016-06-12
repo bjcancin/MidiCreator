@@ -1,16 +1,8 @@
 package com.example.android.midicreator;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import static android.provider.Settings.Global.getString;
 
 
 public class Ritmos {
@@ -36,7 +28,7 @@ public class Ritmos {
             editor.putString("Sevillanas", "x.x.o.x.x.o.");
             editor.putString("Tangos", "xxx.x...");
 
-            editor.commit();
+            editor.apply();
 
             editor = options.edit();
 
@@ -53,7 +45,7 @@ public class Ritmos {
             editor.putInt("REPEAT_Sevillanas", 10);
             editor.putInt("REPEAT_Tangos", 10);
 
-            editor.commit();
+            editor.apply();
         }
     }
 
@@ -70,14 +62,14 @@ public class Ritmos {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(name, ritmo.toLowerCase());
 
-            editor.commit();
+            editor.apply();
 
             editor = options.edit();
 
             editor.putInt("TEMPO_" + name,120);
             editor.putInt("REPEAT_" + name,10);
 
-            editor.commit();
+            editor.apply();
 
             return true;
         }
@@ -94,7 +86,7 @@ public class Ritmos {
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.putString(name, cleanRitmo(ritmo));
 
-            editor.commit();
+            editor.apply();
             return true;
         }
 
@@ -119,13 +111,13 @@ public class Ritmos {
     public void setTempo(String name, int tempo){
         SharedPreferences.Editor editor = options.edit();
         editor.putInt("TEMPO_" + name,tempo);
-        editor.commit();
+        editor.apply();
     }
 
     public void setRepeat(String name, int repeat){
         SharedPreferences.Editor editor = options.edit();
         editor.putInt("REPEAT_" + name,repeat);
-        editor.commit();
+        editor.apply();
     }
 
     public int getTempo(String name){
@@ -159,10 +151,7 @@ public class Ritmos {
 
     public boolean compareChar(Character a, Character b)
     {
-        if(a.compareTo(b) == 0)
-            return true;
-        else
-            return false;
+        return a.compareTo(b) == 0;
     }
 
     public boolean deleteRitmo(String name){
@@ -171,12 +160,12 @@ public class Ritmos {
 
             SharedPreferences.Editor editor = sharedPref.edit();
             editor.remove(name);
-            editor.commit();
+            editor.apply();
 
             editor = options.edit();
             editor.remove("TEMPO_" + name);
             editor.remove("REPEAT_" + name);
-            editor.commit();
+            editor.apply();
 
             return true;
         }

@@ -1,14 +1,12 @@
 package com.example.android.midicreator;
 
-import android.app.ActionBar;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -65,6 +63,9 @@ public class CreateActivity extends AppCompatActivity {
                 return true;
 
             case R.id.options_about:
+                AboutFragment dialog = new AboutFragment();
+                FragmentManager fm = getFragmentManager();
+                dialog.show(fm, "Hola");
                 return true;
 
             case android.R.id.home:
