@@ -19,6 +19,51 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/holo_blue_bright" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Siguiente"
+        android:id="@+id/next_button"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Reproducir"
+        android:id="@+id/help_title"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp"
+        android:textColor="@android:color/holo_blue_dark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Para reproducir un ritmo, primero selecciona un ritmo en la esquina superior derecha de la pantalla inicial, y luego presiona el botón &quot;PLAY&quot;. Para detener la reproducción utiliza el botón &quot;STOP&quot;. Para seleccionar la velocidad de reproducción, modifica la opción &quot;TEMPO&quot;, y para establecer el número de repeticiones, modifica la opción &quot;Repeat&quot;."
+        android:id="@+id/help_paragraph_1"
+        android:layout_below="@+id/help_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Cuando reproduzcas un ritmo, se iniciará automáticamente el contador de tiempos al centro de la pantalla. Para configurarlo, ve al menú superior derecho y escoge &quot;Opciones&quot;."
+        android:id="@+id/help_paragraph_2"
+        android:layout_below="@+id/help_paragraph_1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>
